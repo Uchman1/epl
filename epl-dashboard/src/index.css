@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-ink: #0e1a2b;
+  --color-ink-soft: #14243a;
+  --color-ink-line: #24354c;
+  --color-pitch: #1e7a52;
+  --color-pitch-deep: #145038;
+  --color-pitch-tint: #e4f2ea;
+  --color-chalk: #f6f3ec;
+  --color-chalk-soft: #eeeadf;
+  --color-chalk-line: #ded7c6;
+  --color-amber: #e8a33d;
+  --color-amber-deep: #b97b22;
+  --color-crimson: #c13e3e;
+  --color-crimson-tint: #fbe9e7;
+  --color-steel: #6b7785;
+  --color-steel-soft: #9aa5b1;
+
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+html {
+  color-scheme: light;
+}
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-chalk);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+html.dark body {
+  background-color: var(--color-ink);
+  color: var(--color-chalk);
+}
+
+::selection {
+  background-color: var(--color-amber);
+  color: var(--color-ink);
+}
+
+/* Tabular figures everywhere numbers line up in tables/scoreboards */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Thin scrollbars for horizontally-scrolling mobile tables */
+.scroll-thin::-webkit-scrollbar {
+  height: 6px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background-color: var(--color-steel-soft);
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
